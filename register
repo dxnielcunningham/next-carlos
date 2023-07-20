@@ -1,0 +1,29 @@
+"use client"
+import React from "react"
+import "./register.css"
+import { register } from  "../../service/firebase/auth";
+import { Stack, TextField } from "@mul/material"
+
+export default function login() {
+    
+  const  [state,setState] = React.useState({ 
+    email: "",
+    password: ""
+    })
+
+function onRegister()  {
+   //const email = state.email;
+   //const password = state.password;
+
+    const {email, password} = state;
+
+    register(email, password);
+}
+    return (
+        <div classname="container">
+           <input onChange={onChange} value= {state.email} placeholder="email"type="text" />
+           <input value={state.password}placeholder="123456"  type="password" />
+           <button onClick={onRegister}>login</button>
+        </div>
+    )
+}
